@@ -73,7 +73,12 @@ body{
             opacity: 0;
         }
     }
-
-    .ilhas-container{
-        width: 200px;
-    }
+.ilhas{
+    display: flex;
+}
+.ilhas-container{
+    width: 200px;
+}
+.ilhas-img{
+    width: 200px;
+}
