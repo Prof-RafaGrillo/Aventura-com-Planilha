@@ -79,6 +79,7 @@ body{
 .ilha01{
     margin-top: 20%;
     display: flex;
+    opacity: 1;
 }
 
 .ilhas-container{
@@ -99,8 +100,10 @@ body{
 
 .ilha03, .ilha05{
     margin-top: 30%;
+    opacity:0.3
 }
 
 .ilha02, .ilha04{
     margin-top: 10%;
+    opacity:03
 }
