@@ -74,9 +74,11 @@ body{
         }
     }
 .ilhas{
+    display: flex;
+}
+.ilha01{
     margin-top: 20%;
     display: flex;
-
 }
 
 .ilhas-container{
