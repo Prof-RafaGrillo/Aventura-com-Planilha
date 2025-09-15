@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Asimovian", sans-serif;
+    line-height: 1.6;
+    color: #f0f0f0;
+    background-color: #0a0a1a;
+    overflow-x: hidden;
+}
+
+#particles-js{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cabecalho{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    position: relative;
+    overflow: hidden;
+}
+
+.cabecalho::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 10%, #0a0a1a 90%);
+    opacity: 0.6;
+}
+.cabecalho h1{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0,255,255,0.7);
+    opacity: 0;
+    transform: translateY(50px);
+    animation:fadeInDown 2s forwards 1s;
+}
+
+.cabecalho p{
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInDown 2s forwards 1.5s;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: #00ffff;
+    text-decoration: none;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInDown 2s forwards 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover{
+    background: #00ffff;
+    color: #0a0a1a;
+    box-shadow: 0 0 20px rgba(0,255, 255, 0.7);
+}
+
+
+ /* Animações */
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
