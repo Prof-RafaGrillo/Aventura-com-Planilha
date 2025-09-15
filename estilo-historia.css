@@ -74,7 +74,8 @@ body{
         }
     }
 .ilhas{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 .ilhas-container{
     width: 200px;
