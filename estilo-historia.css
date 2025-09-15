@@ -87,3 +87,11 @@ body{
 .ilhas-img{
     width: 200px;
 }
+
+.ilha03, .ilha05{
+    margin-top: 30%;
+}
+
+.ilha02, .ilha04{
+    margin-top: 10%;
+}
