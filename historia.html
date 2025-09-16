@@ -1,38 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa dos Tesouros</title>
     <link rel="stylesheet" href="./estilo-historia.css">
 </head>
-<body>
-    
-    <div class="ocean" id="ocean"></div>
 
-    <section class="ilhas">
-        <div class="ilhas-container ilha01">
-            <h2 class="ilhas-texto">A Ilha dos Cálculos Perdidos</h2>
-            <img src="./img/ilha01.png" alt="" class="ilhas-img">
+<body>
+
+     <div class="header">
+        <h1 class="page-title">Mapa dos Tesouros</h1>
+        <p class="subtitle">Navegue pelas ilhas misteriosas para encontrar o tesouro perdido do Capitão Números</p>
+    </div>
+    
+    <div class="ocean-container">
+        <div class="stars" id="stars"></div>
+        
+        <div class="pirate-ship">⛵</div>
+        <div class="compass">🧭</div>
+        
+        <section class="ilhas">
+            <div class="ilhas-container ilha01" id="ilha01">
+                <img src="./img/ilha01.png" alt="Ilha dos Cálculos Perdidos" class="ilhas-img">
+                <h2 class="ilhas-texto">A Ilha dos Cálculos Perdidos</h2>
+                <img src="./img/ilha01.png" alt="Reflexo" class="ilhas-img reflection">
+            </div>
+            <div class="ilhas-container ilha02" id="ilha02">
+                <img src="./img/ilha02.png" alt="Floresta das Sombras" class="ilhas-img">
+                <h2 class="ilhas-texto">A Floresta das Sombras</h2>
+                <img src="./img/ilha02.png" alt="Reflexo" class="ilhas-img reflection">
+            </div>
+            <div class="ilhas-container ilha03" id="ilha03">
+                <img src="./img/ilha03.png" alt="Vale dos Guardiões de Pedra" class="ilhas-img">
+                <h2 class="ilhas-texto">O Vale dos Guardiões de Pedra</h2>
+                <img src="./img/ilha03.png" alt="Reflexo" class="ilhas-img reflection">
+            </div>
+            <div class="ilhas-container ilha04" id="ilha04">
+                <img src="./img/ilha04.png" alt="Montanha de Fogo" class="ilhas-img">
+                <h2 class="ilhas-texto">A Montanha de Fogo</h2>
+                <img src="./img/ilha04.png" alt="Reflexo" class="ilhas-img reflection">
+            </div>
+            <div class="ilhas-container ilha05" id="ilha05">
+                <img src="./img/ilha05.png" alt="Castelo do Tesouro Final" class="ilhas-img">
+                <h2 class="ilhas-texto">O Castelo do Tesouro Final</h2>
+                <img src="./img/ilha05.png" alt="Reflexo" class="ilhas-img reflection">
+            </div>
+        </section>
+        
+        <div class="ocean" id="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
         </div>
-        <div class="ilhas-container ilha02">
-            <img src="./img/ilha02.png" alt="" class="ilhas-img">
-            <h2 class="ilhas-texto">A Floresta das Sombras</h2>
+    </div>
+
+    <!-- Modal para a primeira ilha -->
+    <div class="modal" id="ilhaModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title" id="ilhaModalTitle">Ilha dos Cálculos Perdidos</h2>
+            <p class="modal-description" id="ilhaModalDesc">Explore esta ilha misteriosa e complete os desafios para coletar os itens especiais. Cada item possui um valor que contribuirá para o seu tesouro total!</p>
+            
+            <div class="items-container" id="ilhaItemsContainer">
+                <!-- Itens serão inseridos via JavaScript -->
+            </div>
         </div>
-        <div class="ilhas-container ilha03">
-            <h2 class="ilhas-texto">O Vale dos Guardiões de Pedra</h2>
-            <img src="./img/ilha03.png" alt="" class="ilhas-img">
+    </div>
+
+    <!-- Modal de desafio -->
+    <div class="modal desafio-modal" id="desafioModal">
+        <div class="desafio-content">
+            <span class="close-modal" id="closeDesafioModal">&times;</span>
+            
+            <div class="desafio-header">
+                <h2 class="desafio-title" id="desafioTitulo">Desafio do Item</h2>
+                <span class="desafio-dificuldade" id="desafioDificuldade">Fácil</span>
+            </div>
+            
+            <p class="desafio-text" id="desafioDescricao"></p>
+            
+            <div class="planilha-info">
+                <h3><i class="fas fa-table"></i> Use sua planilha eletrônica</h3>
+                <div id="planilhaInstrucoes"></div>
+            </div>
+            
+            <input type="text" class="resposta-input" id="respostaInput" placeholder="Digite sua resposta...">
+            <button class="submit-btn" id="submitResposta">Enviar Resposta</button>
+            
+            <div class="feedback" id="feedback"></div>
+            
+            <div class="desafio-navigation">
+                <button class="nav-btn" id="prevDesafio" disabled>Anterior</button>
+                <button class="nav-btn" id="nextDesafio">Próximo</button>
+            </div>
         </div>
-        <div class="ilhas-container ilha04">
-            <img src="./img/ilha04.png" alt="" class="ilhas-img">
-            <h2 class="ilhas-texto">A Montanha de Fogo</h2>
-        </div>
-        <div class="ilhas-container ilha05">
-            <h2 class="ilhas-texto">O Castelo do Tesouro Final</h2>
-            <img src="./img/ilha05.png" alt="" class="ilhas-img">
-        </div>
-    </section>
+    </div>
+
 
     <script src="./main-historia.js"></script>
 </body>
+
 </html>

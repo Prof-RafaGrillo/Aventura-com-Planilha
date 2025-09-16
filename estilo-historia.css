@@ -1,109 +1,623 @@
-*{
-    margin: 0;
-    padding: 0;
-    
-}
-
-body{
-    background: radial-gradient(circle, rgba(11, 175, 176, 1) 65%, rgba(9, 105, 105, 1) 100%);
-    height: 100vh;
-    overflow: hidden;
-}
-
-.ocean{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.wave {
-    position: absolute;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-    filter: blur(3px);
-    animation: moveWave linear infinite;
-    width: 300px;
-    height: 300px;
-}
-
-.light-reflection {
-        position: absolute;
-        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
-        width: 100%;
-        height: 20%;
-        filter: blur(1px);
-        animation: lightMove linear infinite;
-        opacity: 0;
-    }
-
-@keyframes moveWave{
-    0% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0.6;
+ @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    50% {
-            transform: translate(20px, -15px) scale(1.1);
-            opacity: 0.8;
+        
+        body {
+            font-family: 'MedievalSharp', cursive;
+            background: linear-gradient(to bottom, #0a2a43, #163850, #0a2a43);
+            color: #f8ecc9;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
-    100% {
-            transform: translate(-15px, 10px) scale(0.95);
+        
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            color: #d4af37;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #f8ecc9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Botão de voltar */
+        .back-btn {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(to bottom, #d4af37, #b8860b);
+            color: #3a2c1e;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to bottom, #e5c158, #c9960c);
+        }
+        
+        /* Container do oceano */
+        .ocean-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        
+        /* Oceano com ondas */
+        .ocean {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to bottom, transparent, #1a5f9e);
+            opacity: 0.9;
+            overflow: hidden;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 30px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E");
+            animation: wave 10s linear infinite;
+        }
+        
+        .wave:nth-child(2) {
+            animation-duration: 8s;
+            animation-direction: reverse;
             opacity: 0.5;
         }
-}
-
-@keyframes lightMove {
-        0% {
-            transform: translateY(-100%);
-            opacity: 0;
+        
+        .wave:nth-child(3) {
+            animation-duration: 6s;
+            opacity: 0.7;
+            height: 20px;
         }
-        10% {
+        
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-25%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Container das ilhas */
+        .ilhas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding: 0 5%;
+        }
+        
+        /* Estilo para cada ilha */
+        .ilhas-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        /* Posicionamento vertical diferente para cada ilha */
+        .ilha01 {
+            margin-bottom: 10%;
+        }
+        
+        .ilha02 {
+            margin-bottom: 5%;
+        }
+        
+        .ilha03 {
+            margin-bottom: 15%;
+        }
+        
+        .ilha04 {
+            margin-bottom: 8%;
+        }
+        
+        .ilha05 {
+            margin-bottom: 12%;
+        }
+        
+        /* Estilo para as imagens das ilhas */
+        .ilhas-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+        
+        .ilhas-container:hover .ilhas-img {
+            transform: translateY(-10px) scale(1.1);
+            filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.7));
+        }
+        
+        /* Estilo para o texto das ilhas */
+        .ilhas-texto {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: #f8ecc9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 12px 20px;
+            background: rgba(139, 69, 19, 0.8);
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            margin-top: 15px;
+            max-width: 100px;
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+        
+        .ilhas-container:hover .ilhas-texto {
+            background: rgba(139, 69, 19, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Efeito de reflexo na água */
+        .reflection {
+            position: absolute;
+            bottom: -45%;
+            left: 50%;
+            transform: translateX(-50%) scaleY(-1);
             opacity: 0.3;
+            filter: blur(2px);
+            z-index: 1;
         }
-        50% {
-            opacity: 0.5;
+        
+        /* Elementos decorativos */
+        .pirate-ship {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 40px;
+            transform: rotate(10deg);
+            animation: ship 20s infinite alternate ease-in-out;
+            z-index: 5;
         }
-        90% {
-            opacity: 0.3;
+        
+        @keyframes ship {
+            0% { transform: translateY(0) rotate(10deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(10deg); }
         }
-        100% {
-            transform: translateY(500%);
-            opacity: 0;
+        
+        .compass {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 30px;
+            animation: compass 15s infinite linear;
+            z-index: 5;
         }
-    }
-.ilhas{
-    display: flex;
-}
-.ilha01{
-    margin-top: 20%;
-    display: flex;
-    opacity: 1;
-}
+        
+        @keyframes compass {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Estrelas no céu */
+        .stars {
+            position: absolute;
+            top: 10;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0e6d2" opacity="0.1"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23b38c5f" stroke-width="1" opacity="0.2"/></svg>');
+            background-color: #f8f3e6;
+            border: 15px solid #8b4513;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            color: #3a2c1e;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            color: #8b4513;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #d4af37;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: #b8860b;
+            color: #3a2c1e;
+        }
+        
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            color: #8b4513;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        
+        .modal-description {
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        /* Itens coletáveis */
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .item {
+            background: rgba(139, 69, 19, 0.1);
+            border: 2px solid #b38c5f;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .item.collected {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: #4caf50;
+        }
+        
+        .item.collected::after {
+            content: "✓";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #4caf50;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .item-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            color: #8b4513;
+            margin-bottom: 5px;
+        }
+        
+        .item-value {
+            color: #5a3921;
+            font-size: 14px;
+        }
+        
+        /* MODAL DE DESAFIO */
+        .desafio-modal {
+            display: none;
+        }
+        
+        .desafio-content {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0e6d2" opacity="0.1"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23b38c5f" stroke-width="1" opacity="0.2"/></svg>');
+            background-color: #f8f3e6;
+            border: 15px solid #8b4513;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            color: #3a2c1e;
+        }
+        
+        .desafio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        
+        .desafio-title {
+            font-family: 'Cinzel', serif;
+            color: #8b4513;
+            font-size: 28px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            margin: 0;
+        }
+        
+        .desafio-dificuldade {
+            background: #d4af37;
+            color: #3a2c1e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .desafio-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            background: rgba(139, 69, 19, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #8b4513;
+        }
+        
+        .planilha-info {
+            background: rgba(32, 101, 165, 0.1);
+            border: 2px dashed #1a5f9e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .planilha-info h3 {
+            color: #1a5f9e;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .planilha-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .planilha-info li {
+            margin-bottom: 8px;
+        }
+        
+        .resposta-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #b38c5f;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: 'MedievalSharp', cursive;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .resposta-input:focus {
+            outline: none;
+            border-color: #8b4513;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to bottom, #d4af37, #b8860b);
+            color: #3a2c1e;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to bottom, #e5c158, #c9960c);
+            transform: translateY(-2px);
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: rgba(76, 175, 80, 0.2);
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+        
+        .feedback.incorrect {
+            background: rgba(244, 67, 54, 0.2);
+            color: #d32f2f;
+            border: 1px solid #f44336;
+        }
+        
+        /* Navegação entre desafios */
+        .desafio-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: linear-gradient(to bottom, #8b4513, #6b3409);
+            color: #f8ecc9;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(to bottom, #a05a1f, #7d4510);
+        }
+        
+        .nav-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
 
-.ilhas-container{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    width: 200px;
-    margin-left: 2em;
-}
 
-.ilhas-img:hover{
-    width: 300px;
-}
-
-.ilhas-img{
-    width: 200px;
-}
-
-.ilha03, .ilha05{
-    margin-top: 30%;
-    opacity:0.3;
-}
-
-.ilha02, .ilha04{
-    margin-top: 10%;
-    opacity:0.3;
-}
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .ilhas-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .ilhas-texto {
+                font-size: 14px;
+                padding: 10px 10px;
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .ilhas {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+                padding-bottom: 50px;
+            }
+            
+            .ilhas-container {
+                width: 40%;
+            }
+            
+            .ocean-container {
+                height: auto;
+                min-height: 80vh;
+            }
+            
+            .pirate-ship, .compass {
+                display: none;
+            }
+            .items-container {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .ilhas-container {
+                width: 100%;
+            }
+            
+            .ilhas-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+              .modal-content, .desafio-content {
+                padding: 20px;
+            }
+            
+            .items-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .desafio-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
