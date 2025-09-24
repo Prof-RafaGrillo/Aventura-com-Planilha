@@ -232,6 +232,14 @@
             animation: compass 15s infinite linear;
             z-index: 5;
         }
+         .ajuda {
+            position: absolute;
+            top: 70%;
+            left: 80%;
+            font-size: 30px;
+            animation: compass 15s infinite linear;
+            z-index: 5;
+        }
         
         @keyframes compass {
             0% { transform: rotate(0deg); }
