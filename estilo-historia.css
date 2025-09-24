@@ -234,11 +234,13 @@
         }
          .ajuda {
             position: absolute;
-            top: 70%;
+            top: 20%;
             left: 80%;
             font-size: 30px;
-            animation: compass 15s infinite linear;
             z-index: 5;
+        }
+        .ajuda img {
+            width: 30%;
         }
         
         @keyframes compass {
