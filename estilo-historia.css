@@ -242,6 +242,9 @@
         .ajuda img {
             width: 30%;
         }
+        .ajuda img:hover{
+            width: 40%;
+        }
         
         @keyframes compass {
             0% { transform: rotate(0deg); }
