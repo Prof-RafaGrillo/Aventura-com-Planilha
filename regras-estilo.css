@@ -8,4 +8,5 @@ body{
 img{
     height: 100%;
     width: 100%;
+    box-shadow: 2px 2px 100px 10px black;
 }
