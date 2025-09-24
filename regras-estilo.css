@@ -1,6 +1,11 @@
 body{
-    background-image: url("./img/regras.png");
+    background-image: url("./img/fundo-regras.png");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
+}
+
+.img{
+    height: 100%;
+    width: 100%;
 }
